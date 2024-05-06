@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <a class="navbar-brand" href="#">Electronics Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/Home" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Contact">Contact</a>
+          </li>
+          @if(!accountService.isAuthenticated)
+          {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Login">Login</a>
+          </li>}
+          @else {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Logout">Logout</a>
+          </li>
+        }
+          <li class="nav-item">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <!-- Wishlist Icon -->
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+          </li>
+          <!-- Cart Icon -->
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+</body>
+</html>
