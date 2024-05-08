@@ -7,11 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
-<<<<<<< HEAD
+
    r:{isAdmin:boolean , isCustomer:boolean , name:string , UserId:number}|null=null
-=======
-   r:{isAdmin:boolean , isCustomer:boolean , name:string}|null=null
->>>>>>> b61b8b7b10396062a3abd1def7ae76388eb858bf
   isAuthenticated=false;
   baseurl="https://localhost:7016/api/Account/Login";
   constructor(public http:HttpClient , public router:Router) { }
