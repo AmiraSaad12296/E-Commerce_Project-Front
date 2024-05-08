@@ -1,13 +1,11 @@
 <div *ngIf="account.r?.isCustomer || account.r?.isAdmin">
- 
- 
 <div class="container">
     <div class="row">
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-4 mb-3" *ngFor="let product of products" >
             <div class="card">
-                
+
                 <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
