@@ -21,11 +21,8 @@ export class AccountService {
       console.log(this.r?.isAdmin);
       console.log(this.r?.isCustomer);
       console.log(this.r?.name);
-<<<<<<< HEAD
       console.log(this.r?.UserId);
 
-=======
->>>>>>> b61b8b7b10396062a3abd1def7ae76388eb858bf
     })
   }
   logout(){
