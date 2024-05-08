@@ -22,6 +22,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/Contact">Contact</a>
           </li>
+<<<<<<< HEAD
           <li class="nav-item">
             <a class="nav-link" href="#">Products</a>
           </li>
@@ -30,6 +31,20 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/SubCategory">SubCategory</a>
+=======
+          @if(!accountService.isAuthenticated)
+          {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Login">Login</a>
+          </li>}
+          @else {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Logout">Logout</a>
+          </li>
+        }
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Products">Products</a>
+>>>>>>> b61b8b7b10396062a3abd1def7ae76388eb858bf
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About Us</a>
@@ -42,6 +57,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
           </li>
+<<<<<<< HEAD
           @if(!accountService.isAuthenticated)
           {
           <li class="nav-item">
@@ -55,6 +71,8 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/Register">Register</a>
         </li>
+=======
+>>>>>>> b61b8b7b10396062a3abd1def7ae76388eb858bf
         </ul>
       </div>
     </div>
