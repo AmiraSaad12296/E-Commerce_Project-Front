@@ -20,10 +20,10 @@ export const routes: Routes = [
 {path:'Register',component:RegisterComponent,title:"Register"},
 {path:'Login',component:LoginComponent,title:"Login"},
 {path:'Logout',component:LogoutComponent,title:"Logout"},
+{path:'order',loadChildren:()=>import('../app/order/order.routes').then(p=>p.routes),title:'orders'},
 {path:'Products',component:ProductComponent,title:"Products"},
 { path: 'Products/details/:id', component: ProductDetialsComponent,title: "ProductDetials"} ,
 {path:'',redirectTo:'home',pathMatch:'full'},
-{path:'**',component:NotFoundComponent},
-
-
+{path:'**',component:NotFoundComponent}
 ];
+
