@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-export class AccountService {
+export class AccountService {  
   
-  r:{isAdmin:boolean , isCustomer:boolean , name:string}|null=null;
+  r:{isAdmin:boolean , isCustomer:boolean , name:string , UserId:number}|null=null
+
   isAuthenticated=false;
   baseurl="https://localhost:7016/api/Account/Login";
 
@@ -25,6 +26,8 @@ export class AccountService {
       console.log(this.r?.isAdmin);
       console.log(this.r?.isCustomer);
       console.log(this.r?.name);
+      console.log(this.r?.UserId);
+
     })
   }
 

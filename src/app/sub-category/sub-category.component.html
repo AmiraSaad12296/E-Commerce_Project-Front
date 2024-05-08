@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div
   class="table-responsive"
 >
@@ -8,17 +7,15 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>CatImage</th>
         <th>IsActive</th>
         <th>Date</th>
 
       </tr>
     </thead>
     <tbody>
-      @for (item of cats; track $index) {
+      @for (item of Subcats; track $index) {
       <tr>
-        <td>{{item.catName}}</td>
-        <td><img [src]="getFullImagePath(item.catImage)" alt="Category Image"></td>
+        <td>{{item.subCatName}}</td>
         <td>{{item.isActive}}</td>
         <td>{{item.createdDate}}</td>
       </tr>
@@ -26,6 +23,3 @@
     </tbody>
   </table>
 </div>
-=======
-<p>catagory works!</p>
->>>>>>> b61b8b7b10396062a3abd1def7ae76388eb858bf
