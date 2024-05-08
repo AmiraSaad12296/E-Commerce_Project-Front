@@ -1,4 +1,3 @@
-<p>order-list works!</p>
 <div
     class="table-responsive"
 >
@@ -9,9 +8,14 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Order id</th>
+                <th scope="col">Order date</th>
+                <th scope="col">User Id </th>
+                <th scope="col">Payment Id</th>
+                <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Status</th>
-                <th scope="col">Order date</th>
+                <th scope="col">Cancelled</th>
+                <th scope="col" colspan="2" class="text-center">Operations</th>
             </tr>
         </thead>
         <tbody>
@@ -19,19 +23,29 @@
                 <tr class="">
                     <td>{{i+1}}</td>
                     <td >{{item.orderId}}</td>
+                    <td>{{item.orderDate|date}}</td>
+                    <td>{{item.userId}}</td>
+                    <td>{{item.paymentId}}</td>
+                    <td>{{item.productName}}</td>
                     <td>{{item.quantity}}</td>
                     <td>{{item.status}}</td>
-                    <td>{{item.orderDate|date}}</td>
+                    <td>{{item.isCancel}}</td>
+                    <td>
+                    <button class="btn btn-info"
+                    [routerLink]="['/order/details',item.orderId]" >Details</button>
+                    </td>
+                    <td> 
+                    <button class="btn btn-primary"
+                    [routerLink]="['/order/edit',item.orderId]" >Edit</button>
+                    </td>
                 </tr>
             }@empty {
                 <tr class="">
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
+                    <td colspan="11" class="text-center">no orders exist</td>
                 </tr>
             }
-            
-         
         </tbody>
     </table>
+    <button class="btn btn-primary" [routerLink]="['/order/add']" >Add</button>
+
 </div>

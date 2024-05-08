@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../../Services/account.service';
-import { UserLogin } from '../../Models/user-login';
+import { UserLogin } from '../../models/user-login';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,9 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
-   user:UserLogin=new UserLogin("","")
+
+  user:UserLogin=new UserLogin("","");
+  
   constructor(public accountService:AccountService , public router:Router){}
+  
   login(){
     this.accountService.login(this.user);
   }

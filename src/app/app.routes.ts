@@ -13,11 +13,10 @@ export const routes: Routes = [
 {path:'Category',component:ContactUsComponent,title:"Category"},
 {path:'Login',component:LoginComponent,title:"Login"},
 {path:'Logout',component:LogoutComponent,title:"Logout"},
-{path:'',redirectTo:'home',pathMatch:'full'},
-{path:'**',component:NotFoundComponent},
 
 {path:'order',loadChildren:()=>import('../app/order/order.routes').then(p=>p.routes),title:'orders'},
 
-
+{path:'',redirectTo:'home',pathMatch:'full'},
+{path:'**',component:NotFoundComponent}
 ];
 
