@@ -1,0 +1,25 @@
+<div
+  class="table-responsive"
+>
+  <table
+    class="table table-bordered table-hover"
+  >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>IsActive</th>
+        <th>Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of Subcats; track $index) {
+      <tr>
+        <td>{{item.subCatName}}</td>
+        <td>{{item.isActive}}</td>
+        <td>{{item.createdDate}}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

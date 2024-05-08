@@ -1,0 +1,6 @@
+<div *ngIf="account.r?.isAdmin">
+<app-admin-contact-us></app-admin-contact-us>
+</div>
+<div *ngIf="account.r?.isCustomer">
+<app-customer-contact-us></app-customer-contact-us>
+</div>
