@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../Services/products.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CartService } from '../../Services/cart.service';
+import { AccountService } from '../../Services/account.service';
 
 @Component({
   selector: 'app-product-detials',
@@ -11,7 +13,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class ProductDetialsComponent {
   product:any;
-  constructor(public  productService: ProductsService,public activatedRoute:ActivatedRoute){}
+  constructor(public  productService: ProductsService,public activatedRoute:ActivatedRoute, public cartService:CartService , public account:AccountService){}
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(p=>{
       this.productService.getProductById(p['id']).subscribe(data=>{
@@ -19,4 +21,15 @@ export class ProductDetialsComponent {
       })
     })
   }
+
+  addToCart(productId: number , userId:number): void {
+    if (userId !== undefined) {
+    this.cartService.addToCart(productId,userId).subscribe(
+      () => {
+        console.log('Product added to cart successfully.');
+        this.cartService.incrementCartCount(1);
+        });
+      }
+      }
+
 }

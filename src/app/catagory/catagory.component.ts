@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CatagoryComponent {
 
-  cats:Catagory[]=[]
+   cats:Catagory[]=[]
   constructor(public catagorservice:CatagoryService){}
   ngOnInit(): void {
    this.catagorservice.getAll().subscribe(data=>{

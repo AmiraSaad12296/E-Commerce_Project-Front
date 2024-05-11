@@ -10,13 +10,15 @@ import { CatagoryComponent } from './catagory/catagory.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { ProductComponent } from './Product/product/product.component';
 import { ProductDetialsComponent } from './Product/product-detials/product-detials.component';
+import { CartListComponent } from './Cart/cart-list/cart-list.component';
 
 export const routes: Routes = [
 
-{path:'Home',component:HomeComponent,title:"Home"},
+{path:'home',component:HomeComponent,title:"Home"},
 {path:'Contact',component:ContactUsComponent,title:"Contact", canActivate:[canLoginGuard]},
 {path:'Category',component:CatagoryComponent,title:"Category"},
 {path:'SubCategory',component:SubCategoryComponent,title:"SubCategory"},
+{path:'Cart',component:CartListComponent,title:"Cart"},
 {path:'Register',component:RegisterComponent,title:"Register"},
 {path:'Login',component:LoginComponent,title:"Login"},
 {path:'Logout',component:LogoutComponent,title:"Logout"},

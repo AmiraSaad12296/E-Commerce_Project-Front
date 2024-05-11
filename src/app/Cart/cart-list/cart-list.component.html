@@ -1,1 +1,39 @@
-<p>cart-list works!</p>
+<div
+  class="table-responsive"
+>
+  <table
+    class="table table-primary table-bordered"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Product Details</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of Cartproduct; track $index) {
+      <tr class="">
+        <td>
+            <div class="card">
+                <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct" style="
+                width: 50%">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">Color: ${{ product.color }}</p>
+                <p class="card-text">Size: ${{ product.size }}</p>
+                <p class="card-text">Seller: ${{ product.companyName }}</p>
+              </div>
+            </div>
+        </td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.price}}</td>
+        <td></td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
+
