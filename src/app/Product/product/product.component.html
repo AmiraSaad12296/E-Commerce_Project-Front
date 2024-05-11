@@ -11,7 +11,9 @@
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.description }}</p>
                 <p class="card-text">Price: ${{ product.price }}</p>
-                <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product)">Add to Cart</button>
+
+                  <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product.id , account.r.UserId)">Add to Cart</button>
+
                 <button class="btn btn-secondary animate__animated animate__fadeIn" [routerLink]="['/Products/details',product.id]">Show Details</button>
               </div>
             </div>

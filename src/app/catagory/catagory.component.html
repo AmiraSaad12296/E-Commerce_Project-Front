@@ -1,27 +1,6 @@
-<div
-  class="table-responsive"
->
-  <table
-    class="table table-bordered table-hover"
-  >
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>CatImage</th>
-        <th>IsActive</th>
-        <th>Date</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of cats; track $index) {
-      <tr>
-        <td>{{item.catName}}</td>
-        <td><img [src]="getFullImagePath(item.catImage)" alt="Category Image"></td>
-        <td>{{item.isActive}}</td>
-        <td>{{item.createdDate}}</td>
-      </tr>
-    }
-    </tbody>
-  </table>
-</div>
+  @for (item of cats; track $index) {
+    <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+   {{item.catName}}
+  </a>
+  }
