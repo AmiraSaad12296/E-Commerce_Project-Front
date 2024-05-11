@@ -11,6 +11,7 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { ProductComponent } from './Product/product/product.component';
 import { ProductDetialsComponent } from './Product/product-detials/product-detials.component';
 import { CartListComponent } from './Cart/cart-list/cart-list.component';
+import { ProductUpdateComponent } from './Product/product-update/product-update.component';
 
 export const routes: Routes = [
 
@@ -25,6 +26,7 @@ export const routes: Routes = [
 {path:'order',loadChildren:()=>import('../app/order/order.routes').then(p=>p.routes),title:'orders'},
 {path:'Products',component:ProductComponent,title:"Products"},
 { path: 'Products/details/:id', component: ProductDetialsComponent,title: "ProductDetials"} ,
+{ path: 'Products/update/:id', component: ProductUpdateComponent,title: "ProductUpdate"} ,
 {path:'',redirectTo:'home',pathMatch:'full'},
 {path:'**',component:NotFoundComponent}
 ];

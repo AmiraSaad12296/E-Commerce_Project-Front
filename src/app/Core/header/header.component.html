@@ -45,9 +45,15 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
+          @if(!accountService.isAuthenticated)
+          {
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Products">Products</a>
+            <a class="nav-link" routerLink="/Login">Products</a>
           </li>
+        }
+        @else {<li class="nav-item">
+          <a class="nav-link" routerLink="/Products">Products</a>
+        </li>}
           @if(!accountService.isAuthenticated)
           {
           <li class="nav-item">

@@ -22,11 +22,11 @@ export class ProductsService {
   createProduct(product: any) {
     return this.http.post(this.baseurl, product);
   }
-  updateProductById(id: number, product: any) {
-    return this.http.put(this.baseurl + '/' + id, product);
+  updateProductById(productId: number, product: any): Observable<any> {
+    return this.http.put<any>(`${this.baseurl}${productId}`, product);
   }
-  deleteProductById(id: number) {
-    return this.http.delete(this.baseurl + '/' + id);
+  deleteProductById(id: number): Observable<void> {
+    const url = `${this.baseurl}${id}`; // Correct concatenation
+    return this.http.delete<void>(url);
   }
-  
 }
