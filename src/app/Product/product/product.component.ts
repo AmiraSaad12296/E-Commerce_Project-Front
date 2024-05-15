@@ -5,6 +5,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Router, RouterLink} from '@angular/router';
 import { AccountService } from '../../Services/account.service';
 import { CartService } from '../../Services/cart.service';
+import { WishListService } from '../../Services/wish-list.service';
 
 @Component({
   selector: 'app-product',
@@ -16,8 +17,7 @@ import { CartService } from '../../Services/cart.service';
 export class ProductComponent {
   products: any[]=[];
   cartItems: any[] = [];
-  productId: number=0
-  constructor(public  productService: ProductsService, public router:Router,public account:AccountService ,public cartService:CartService) { }
+  constructor(public  productService: ProductsService, public router:Router,public account:AccountService ,public cartService:CartService , public wishService:WishListService) { }
 
   ngOnInit() {
     this.productService.getAll().subscribe((data: any) => {
@@ -42,20 +42,17 @@ addToCart(productId: number , userId:number): void {
       });
     }
 
-
-
-removeFromCart(item: any) {
-  const index = this.cartItems.indexOf(item);
-  if (index !== -1) {
-    this.cartItems.splice(index, 1);
-  }
-}
+    addWish(productId: number , userId:number): void {
+      this.wishService.addToWish(productId,userId).subscribe(
+        () => {
+          console.log('Product added to WishList successfully.');
+          this.wishService.incrementCartCount(1);
+          });
+        }
 
 getTotal(): number {
   return this.cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
 }
-
-
 
 }
 

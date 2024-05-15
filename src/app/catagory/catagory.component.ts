@@ -21,8 +21,5 @@ export class CatagoryComponent {
     this.cats=data;
    })
   }
-  getFullImagePath(relativePath: string): string {
-    return 'https://localhost:7016' + relativePath;
-  }
 }
 

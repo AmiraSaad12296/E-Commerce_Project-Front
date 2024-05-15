@@ -1,9 +1,5 @@
-<div
-  class="table-responsive"
->
-  <table
-    class="table table-primary table-bordered"
-  >
+<div class="table-responsive">
+  <table class="table table-primary table-bordered">
     <thead>
       <tr>
         <th scope="col">Product Details</th>
@@ -13,26 +9,32 @@
       </tr>
     </thead>
     <tbody>
-      @for (product of Cartproduct; track $index) {
-      <tr class="">
+      <!-- Iterate through each product in the cart -->
+      <tr *ngFor="let product of Cartproduct; let i = index">
         <td>
-            <div class="card">
-                <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct" style="
-                width: 50%">
-              <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <p class="card-text">Color: ${{ product.color }}</p>
-                <p class="card-text">Size: ${{ product.size }}</p>
-                <p class="card-text">Seller: ${{ product.companyName }}</p>
-              </div>
+          <div class="card">
+            <img [src]="'https://localhost:7016' + product.productURL" class="card-img-top" alt="ImageProduct" style="width: 50%">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">Color: {{ product.color }}</p>
+              <p class="card-text">Size: {{ product.size }}</p>
+              <p class="card-text">Seller: {{ product.companyName }}</p>
             </div>
+          </div>
         </td>
-        <td>{{product.quantity}}</td>
-        <td>{{product.price}}</td>
-        <td></td>
+          <button (click)="decreaseQuantity(product.id, account.r.UserId)">-</button>
+          <span>{{ product.quantity }}</span>
+          <button (click)="increaseQuantity(product.id, account.r.UserId)">+</button>
+        <td>
+          <button class="btn btn-primary animate__animated animate__fadeIn" (click)="onDelete(product.id, account.r.UserId)">Remove</button>
+        </td>
       </tr>
-    }
+      <tr>
+        <td colspan="2">Total:</td>
+        <td>{{ totalPrice | number:'1.1-1' }}</td>
+        <td ></td>
+      </tr>
     </tbody>
   </table>
 </div>
