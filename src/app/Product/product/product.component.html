@@ -14,24 +14,11 @@
 
                   <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product.id , account.r.UserId)">Add to Cart</button>
 
+                  <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addWish(product.id , account.r.UserId)">Add to Wishlist</button>
+
                 <button class="btn btn-secondary animate__animated animate__fadeIn" [routerLink]="['/Products/details',product.id]">Show Details</button>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-header">Shopping Cart</div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let item of cartItems">
-              {{ item.product.name }} - Quantity: {{ item.quantity }}
-              <button class="btn btn-danger btn-sm float-right" (click)="removeFromCart(item)">Remove</button>
-            </li>
-          </ul>
-          <div class="card-footer">
-            <p>Total: ${{ getTotal() }}</p>
-            <button class="btn btn-success">Checkout</button>
           </div>
         </div>
       </div>

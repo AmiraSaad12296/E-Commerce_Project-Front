@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../Models/product';
 import { Cart } from '../Models/cart';
-import { BehaviorSubject, Observable, Subject, forkJoin, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, forkJoin, of, switchMap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class CartService {
     return this.http.get<Cart[]>(`${this.baseurl}${userId}`);
   }
 
-  getCartProductById(productId: number): Observable<any> {
+  getCartProductById(productId: number){
 
     return this.http.get<any>(this.baseurl + productId);
   }
@@ -50,6 +50,28 @@ export class CartService {
 
   incrementCartCount(quantity: number): void {
     this.cartCountSubject.next(this.cartCountSubject.value + quantity);
+  }
+
+  DeleteItem(productId: number , userId:number){
+    const url = `${this.baseurl}${productId}/${userId}`
+    return this.http.delete<any>(url).pipe(
+      switchMap(() => {
+        this.cartCountSubject.next(this.cartCountSubject.value - 1);
+        return of(null);
+      }),
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
+  IncreaseQuantity(productId: number , userId:number){
+    const url = `${this.baseurl}increase/${productId}/${userId}`
+    return this.http.put<any>(url , productId);
+  }
+
+  DecreaseQuantity(productId: number , userId:number){
+    const url = `${this.baseurl}Decrease/${productId}/${userId}`
+    return this.http.put<any>(url , productId);
   }
 }
 

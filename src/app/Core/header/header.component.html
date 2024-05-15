@@ -83,6 +83,22 @@
               </li>
             </ul>
           </div>
+          <div class="dropdown">
+            <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" routerLink="/Category">
+              SubCategory
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <app-sub-category></app-sub-category>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
           <li class="nav-item">
             <a class="nav-link" routerLink="/Contact">Contact</a>
           </li>
@@ -104,6 +120,12 @@
           <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
           <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
             {{ cartItemCount }}
+          </span>
+        </a>
+        <a class="nav-icon position-relative text-decoration-none" routerLink="/Wish">
+          <i class="fa fa-fw fa-heart text-dark mr-1"></i>
+          <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
+            {{ WishItemCount }}
           </span>
         </a>
         <a class="nav-icon position-relative text-decoration-none" href="#">

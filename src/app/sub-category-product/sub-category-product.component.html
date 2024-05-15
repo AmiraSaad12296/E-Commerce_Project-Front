@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3" *ngFor="let product of Wishproduct; let i = index">
+    <div class="col-md-6 offset-md-3" *ngFor="let product of products; let i = index">
       <div class="card">
         <img [src]="'https://localhost:7016' + product.productURL" class="card-img-top" alt="Product Image">
         <div class="card-body">
@@ -11,11 +11,11 @@
           <p class="card-text">Size: {{ product.size }}</p>
           <p class="card-text">Color: {{ product.color }}</p>
           <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product.id , account.r.UserId)">Add to Cart</button>
-          <button class="btn btn-primary animate__animated animate__fadeIn" (click)="onDelete(product.id, account.r.UserId)">Remove</button>
+          <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addWish(product.id , account.r.UserId)">Add to Wishlist</button>
           <button [routerLink]="['/Products']" class="btn btn-secondary">Go Back</button>
+
         </div>
       </div>
     </div>
   </div>
 </div>
-
