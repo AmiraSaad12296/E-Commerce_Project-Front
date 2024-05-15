@@ -1,4 +1,4 @@
-<div *ngIf="account.r?.isCustomer || account.r?.isAdmin">
+<div *ngIf="account.r?.isCustomer ">
 <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -26,3 +26,38 @@
   </div>
 
 </div>
+
+
+
+
+
+
+<!-- Admin -->
+
+
+
+<div *ngIf="account.r?.isAdmin ">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let product of products" >
+              <div class="card">
+  
+                  <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">{{ product.description }}</p>
+                  <p class="card-text">Price: ${{ product.price }}</p>
+  
+                    <button class="btn btn-danger animate__animated animate__fadeIn" (click)="Delete(product.id )">Delete</button>
+  
+                  <button class="btn btn-secondary animate__animated animate__fadeIn" [routerLink]="['/Products/update',product.id]">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

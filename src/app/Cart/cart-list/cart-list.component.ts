@@ -5,11 +5,12 @@ import { Cart } from '../../Models/cart';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../Services/cart.service';
 import { AccountService } from '../../Services/account.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './cart-list.component.html',
   styleUrl: './cart-list.component.css'
 })
@@ -78,4 +79,19 @@ decreaseQuantity(productId: number, userId: number) {
   );
 }
 
+getCheckoutQueryParams() {
+  const productIds = this.Cartproduct.map(product => product.id).join(',');
+  const productNames = this.Cartproduct.map(product => product.name).join(',');
+  const quantities = this.Cartproduct.map(product => product.quantity).join(',');
+
+  return {
+    userId: this.account.r.UserId,
+    productIds: productIds,
+    productNames: productNames,
+    quantities: quantities
+  };
+
 }
+}
+
+

@@ -28,6 +28,15 @@ export class ProductComponent {
 
 }
 
+Delete(productId: number) {
+  this.productService.deleteProductById(productId).subscribe(() => {
+    this.products = this.products.filter(product => product.id !== productId);
+    
+    
+  })
+
+}
+
 showDetails(product: Product) {
   this.productService.getProductById(product.id).subscribe((data: any) => {
 

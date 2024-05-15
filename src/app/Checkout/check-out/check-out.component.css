@@ -1,0 +1,41 @@
+.Shipping-form {
+    position: relative;
+    background-color: white;
+    padding: 10px;
+  }
+  
+  h1 {
+    margin-left: 0;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Poppins';
+    line-height: 1.5;
+  }
+  
+  .ion-button,
+  .btn {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 26px;
+    margin-top: 10px;
+    color: white;
+    background-color: #069e1fe1;
+  }
+  
+  .ion-radio-group {
+    width: 100%;
+  }
+  
+  .ion-radio {
+    font-weight: bold;
+    font-family: 'DM Sans';
+    font-size: 15px;
+    color: black;
+    margin-top: 5px;
+  }
+  
+  .checkout-button {
+    margin-top: 10px;
+  }
+  
