@@ -12,6 +12,7 @@ import { ProductComponent } from './Product/product/product.component';
 import { ProductDetialsComponent } from './Product/product-detials/product-detials.component';
 import { CartListComponent } from './Cart/cart-list/cart-list.component';
 import { ProductUpdateComponent } from './Product/product-update/product-update.component';
+import { CheckOutComponent } from './Checkout/check-out/check-out.component';
 
 export const routes: Routes = [
 
@@ -23,10 +24,10 @@ export const routes: Routes = [
 {path:'Register',component:RegisterComponent,title:"Register"},
 {path:'Login',component:LoginComponent,title:"Login"},
 {path:'Logout',component:LogoutComponent,title:"Logout"},
-{path:'order',loadChildren:()=>import('../app/order/order.routes').then(p=>p.routes),title:'orders'},
 {path:'Products',component:ProductComponent,title:"Products"},
 { path: 'Products/details/:id', component: ProductDetialsComponent,title: "ProductDetials"} ,
 { path: 'Products/update/:id', component: ProductUpdateComponent,title: "ProductUpdate"} ,
+{path:'Checkout',component:CheckOutComponent,title:"Checkout"},
 {path:'',redirectTo:'home',pathMatch:'full'},
 {path:'**',component:NotFoundComponent}
 ];
