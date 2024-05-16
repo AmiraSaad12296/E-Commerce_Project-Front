@@ -130,8 +130,28 @@
         </a>
         <a class="nav-icon position-relative text-decoration-none" href="#">
           <i class="fa fa-fw fa-user text-dark mr-3"></i>
-          <span
-            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+          <div class="dropdown">
+            <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" routerLink="/Category">
+              <span
+            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+            </a>
+            <ul class="dropdown-menu">
+            @if(!accountService.isAuthenticated)
+            {
+
+            <li> <a class="nav-link" routerLink="/Login">Login</a></li>
+            }
+            @else {
+
+            <li> <a class="nav-link" routerLink="/Logout">Logout</a></li>
+
+          }
+            <li> <a class="nav-link" routerLink="/Register">Register</a> </li>
+
+
+          </ul>
+          </div>
         </a>
       </div>
     </div>
