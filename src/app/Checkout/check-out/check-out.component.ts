@@ -72,7 +72,7 @@ export class CheckOutComponent implements OnInit {
 
 
 
-    
+
 
     async submitForm(userId:number) {
 
@@ -139,28 +139,6 @@ export class CheckOutComponent implements OnInit {
     this.location.back();
 
   }
-
-  // goToAccountPage() {
-  //   if (this.userId && this.userType) {
-  //     switch (this.userType) {
-  //       case 'customer':
-  //         this.router.navigate([`/customer-account/${this.userId}`]);
-  //         break;
-  //       case 'seller':
-  //         this.router.navigate([`/seller-account/${this.userId}`]);
-  //         break;
-  //       case 'Boss':
-  //         this.router.navigate([`/boss-account/${this.userId}`]);
-  //         break;
-  //       default:
-  //         console.error('Invalid user type');
-  //         break;
-  //     }
-  //   } else {
-  //       this.router.navigate(['/sign-in']);
-  //   }
-  // }
-
   goToHomePage(userId:number) {
     this.router.navigate(['/home'], { queryParams: { userId: this.userId, userType: this.userType } });
     this.DeleteCartItems(userId)
@@ -168,6 +146,7 @@ export class CheckOutComponent implements OnInit {
 
   DeleteCartItems(userId:number)
   {
+    this.router.navigateByUrl("/PlaceOrder")
     this.cartservice.DeleteUserItems(userId).subscribe({
       next: () => {
         console.log('Product deleted successfully.');

@@ -3,7 +3,7 @@ import { AccountService } from '../../Services/account.service';
 import { CartService } from '../../Services/cart.service';
 import { Router } from '@angular/router';
 import { WishListService } from '../../Services/wish-list.service';
-=======
+
 
 @Component({
   selector: 'app-logout',
