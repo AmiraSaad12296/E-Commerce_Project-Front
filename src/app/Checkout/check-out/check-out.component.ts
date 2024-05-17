@@ -28,6 +28,8 @@ export class CheckOutComponent implements OnInit {
   productIds:any[]=[];
   productNames: any[] = [];
   quantities:any[]=[];
+
+
   constructor(private http: HttpClient,private nacctrl: NavController,private router: Router,
     private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController,public cartservice:CartService , public account:AccountService) {
 
@@ -68,7 +70,12 @@ export class CheckOutComponent implements OnInit {
     }
 
 
+
+
+    
+
     async submitForm(userId:number) {
+
 
       if (this.checkoutForm.valid && this.productNames.length > 0 && this.productIds.length > 0) {
         try {

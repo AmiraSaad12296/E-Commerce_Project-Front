@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3" *ngFor="let product of Wishproduct; let i = index">
+    <div class="col-md-3 mb-2" *ngFor="let product of Wishproduct; let i = index">
       <div class="card">
-        <img [src]="'https://localhost:7016' + product.productURL" class="card-img-top" alt="Product Image">
+        <img [src]="'https://localhost:7016' + product.productURL" class="card-img-top " style="width: 50%;" alt="Product Image">
         <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.description }}</p>
-          <p class="card-text">Price: ${{ product.price }}</p>
-          <p class="card-text">Company: {{ product.companyName }}</p>
-          <p class="card-text">Size: {{ product.size }}</p>
-          <p class="card-text">Color: {{ product.color }}</p>
-          <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product.id , account.r.UserId)">Add to Cart</button>
-          <button class="btn btn-primary animate__animated animate__fadeIn" (click)="onDelete(product.id, account.r.UserId)">Remove</button>
-          <button [routerLink]="['/Products']" class="btn btn-secondary">Go Back</button>
+          <h5 class="card-title fs-5 fw-bold">{{ product.name }}</h5>
+          <p class="card-text fs-6 fw-bold">{{ product.description }}</p>
+          <p class="card-text fs-6 fw-bold">Price: ${{ product.price }}</p>
+          <p class="card-text fs-6 fw-bold">Company: {{ product.companyName }}</p>
+          <p class="card-text fs-6 fw-bold">Size: {{ product.size }}</p>
+          <p class="card-text fs-6 fw-bold">Color: {{ product.color }}</p>
+          <button id="addtocart" class="btn btn-primary animate__animated animate__fadeIn cart-button br-0" (click)="addToCart(product.id , account.r.UserId)"><i class="fas fa-shopping-cart"></i></button>
+
+          <button class="btn btn-danger animate__animated animate__fadeIn fas fa-trash" (click)="onDelete(product.id, account.r.UserId)"></button>
+
+          <button [routerLink]="['/Products']" class="btn btn-dark fas fa-arrow-left"></button>
         </div>
       </div>
     </div>

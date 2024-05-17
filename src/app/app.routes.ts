@@ -19,13 +19,17 @@ import { SubUpdateComponent } from './sub-category-admin/sub-update/sub-update.c
 import { AdminContactUsComponent } from './contact-us/admin-contact-us/admin-contact-us.component';
 import { CustomerContactUsComponent } from './contact-us/customer-contact-us/customer-contact-us.component';
 import { AboutComponent } from './about/about.component';
+import { SubDeleteComponent } from './sub-category-admin/sub-delete/sub-delete.component';
 
 export const routes: Routes = [
 
 {path:'home',component:HomeComponent,title:"Home"},
+
 {path:'About',component:AboutComponent,title:"About"},
 {path:'Contact/Customer',component:CustomerContactUsComponent,title:"Contact"},
 {path:'Contact/Admin',component:AdminContactUsComponent,title:"Contact",canActivate:[canLoginGuard]},
+{path:'Contact',component:ContactUsComponent,title:"Contact", canActivate:[canLoginGuard]},
+{path:'Category',component:CatagoryComponent,title:"Category"},
 {path:'SubCategory',component:SubCategoryComponent,title:"SubCategory" },
 {path:'SubCategory/:subCatId', component:SubCategoryProductComponent,title:"SubProduct"},
 {path:'SubCategoryAdmin',component:SubCategoryAdminComponent,title:"SubCategory" , canActivate:[canLoginGuard] },

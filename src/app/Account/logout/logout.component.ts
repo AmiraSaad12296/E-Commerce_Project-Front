@@ -3,6 +3,7 @@ import { AccountService } from '../../Services/account.service';
 import { CartService } from '../../Services/cart.service';
 import { Router } from '@angular/router';
 import { WishListService } from '../../Services/wish-list.service';
+=======
 
 @Component({
   selector: 'app-logout',
@@ -13,6 +14,7 @@ import { WishListService } from '../../Services/wish-list.service';
 })
 
 export class LogoutComponent {
+
   constructor(public accountservice:AccountService ,public cartService:CartService,public WishService:WishListService ,public router:Router){}
 
   ngOnInit(): void {

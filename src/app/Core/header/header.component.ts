@@ -29,6 +29,17 @@ ngOnInit(): void {
   this.wishService.WishCount$.subscribe(count => {
     this.WishItemCount  = count;
 });
+  }
+  logout() {
+    this.accountService.logout();
+  }
+}
+navigateToSubCategory(): void {
+  if (this.accountService.r?.isCustomer ) {
+    this.router.navigate(['/SubCategory']);
+  } else if (this.accountService.r?.isAdmin) {
+    this.router.navigate(['/SubCategoryAdmin']);
+  }
 }
 navigateToSubCategory(): void {
   if (this.accountService.r?.isCustomer ) {
