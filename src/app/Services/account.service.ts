@@ -14,7 +14,23 @@ export class AccountService {
   isAuthenticated=false;
   baseurl="https://localhost:7016/api/Account/Login";
 
-  constructor(public http:HttpClient , public router:Router) { }
+  constructor(public http:HttpClient , public router:Router) {
+    this.checkToken();
+  }
+
+  private checkToken(): void {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.isAuthenticated = true;
+      this.r = jwtdecode.jwtDecode(token);
+      console.log(this.r.isAdmin);
+      console.log(this.r.isCustomer);
+      console.log(this.r.name);
+      console.log(this.r.UserId);
+    } else {
+      this.isAuthenticated = false;
+    }
+  }
 
   login(user: UserLogin) {
     this.http.post(this.baseurl,user,{responseType:'text'}).subscribe(d=>{

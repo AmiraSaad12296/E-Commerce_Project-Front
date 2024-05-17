@@ -56,7 +56,7 @@ export class CartService {
     const url = `${this.baseurl}${productId}/${userId}`
     return this.http.delete<any>(url).pipe(
       switchMap(() => {
-        this.cartCountSubject.next(this.cartCountSubject.value - 1);
+        this.cartCountSubject.next(this.cartCountSubject.value);
         return of(null);
       }),
       catchError((error) => {

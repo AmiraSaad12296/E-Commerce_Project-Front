@@ -32,7 +32,7 @@ export class WishListService {
     const url = `${this.baseurl}${productId}/${userId}`
     return this.http.delete<any>(url).pipe(
       switchMap(() => {
-        this.WishCountSubject.next(this.WishCountSubject.value - 1);
+        this.WishCountSubject.next(this.WishCountSubject.value-1);
         return of(null);
       }),
       catchError((error) => {
@@ -57,12 +57,17 @@ export class WishListService {
     return this.wishItemsSubject.asObservable();
   }
 
-  updateCartCount(count: number): void {
+  updateWishCount(count: number): void {
     this.WishCountSubject.next(count);
   }
 
   incrementCartCount(quantity: number): void {
     this.WishCountSubject.next(this.WishCountSubject.value + quantity);
+  }
+
+  DeleteUserItems(userId:number){
+    const url = `${this.baseurl}${userId}`
+    return this.http.delete<any>(url)
   }
 }
 

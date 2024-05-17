@@ -21,7 +21,7 @@ import { SubCategoryAdminComponent } from '../../sub-category-admin/sub-category
 export class HeaderComponent {constructor(public accountService:AccountService , public cartService:CartService , public wishService:WishListService ,public router:Router){}
 cartItemCount = 0;
 WishItemCount = 0;
-
+isDropdownOpen=false;
 ngOnInit(): void {
   this.cartService.cartCount$.subscribe(count => {
     this.cartItemCount = count;
@@ -36,5 +36,9 @@ navigateToSubCategory(): void {
   } else if (this.accountService.r?.isAdmin) {
     this.router.navigate(['/SubCategoryAdmin']);
   }
+}
+toggleDropdown(event: MouseEvent) {
+  event.preventDefault();
+  this.isDropdownOpen = !this.isDropdownOpen;
 }
 }
