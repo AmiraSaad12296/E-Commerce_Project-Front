@@ -30,17 +30,8 @@ ngOnInit(): void {
     this.WishItemCount  = count;
 });
   }
-  logout() {
-    this.accountService.logout();
-  }
-}
-navigateToSubCategory(): void {
-  if (this.accountService.r?.isCustomer ) {
-    this.router.navigate(['/SubCategory']);
-  } else if (this.accountService.r?.isAdmin) {
-    this.router.navigate(['/SubCategoryAdmin']);
-  }
-}
+
+
 navigateToSubCategory(): void {
   if (this.accountService.r?.isCustomer ) {
     this.router.navigate(['/SubCategory']);
@@ -53,3 +44,4 @@ toggleDropdown(event: MouseEvent) {
   this.isDropdownOpen = !this.isDropdownOpen;
 }
 }
+

@@ -1,7 +1,7 @@
 
 .dropdown.show .dropdown-menu {
   display: block;
-
+}
 #templatemo_nav_top{
   background-color: rgb(34, 34, 99);
 }
@@ -33,3 +33,4 @@
   margin-top: 8px; /* Adjust this value to move the dropdown further down */
 
 }
+
