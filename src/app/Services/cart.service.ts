@@ -73,5 +73,10 @@ export class CartService {
     const url = `${this.baseurl}Decrease/${productId}/${userId}`
     return this.http.put<any>(url , productId);
   }
+
+  DeleteUserItems(userId:number){
+    const url = `${this.baseurl}${userId}`
+    return this.http.delete<any>(url)
+  }
 }
 

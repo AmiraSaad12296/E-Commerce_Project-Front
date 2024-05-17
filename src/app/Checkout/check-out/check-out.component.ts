@@ -1,10 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { AlertController, NavController } from '@ionic/angular';
 import {  CommonModule, Location } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AccountService } from '../../Services/account.service';
+import { CartService } from '../../Services/cart.service';
 
 
 
@@ -27,9 +28,9 @@ export class CheckOutComponent implements OnInit {
   productIds:any[]=[];
   productNames: any[] = [];
   quantities:any[]=[];
-  constructor(private http: HttpClient,private navCtrl: NavController,private router: Router,
-    private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController) {
-      
+  constructor(private http: HttpClient,private nacctrl: NavController,private router: Router,
+    private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController,public cartservice:CartService , public account:AccountService) {
+
     }
     async ngOnInit() {
 
@@ -55,23 +56,23 @@ export class CheckOutComponent implements OnInit {
       if (queryParams['productIds']) {
         this.productIds = queryParams['productIds'].split(',');
       }
-      
+
       if (queryParams['productNames']) {
         this.productNames = queryParams['productNames'].split(',');
       }
       if (queryParams['quantities']) {
         this.quantities = queryParams['quantities'].split(',');
       }
-      
-    
+
+
     }
 
-  
-    async submitForm() {
-    
+
+    async submitForm(userId:number) {
+
       if (this.checkoutForm.valid && this.productNames.length > 0 && this.productIds.length > 0) {
         try {
-          
+
           const paymentData = {
             name: this.checkoutForm.get('fullName')?.value,
             address: this.checkoutForm.get('address')?.value,
@@ -80,11 +81,11 @@ export class CheckOutComponent implements OnInit {
             expDate: this.checkoutForm.get('expiryDate')?.value,
             ccVNo: this.checkoutForm.get('cvv')?.value
           };
-          
+
           const paymentResponse = await this.http.post<any>('https://localhost:7016/api/Payment', paymentData).toPromise();
           console.log(paymentResponse.paymentId)
           const payId = paymentResponse.paymentId;
-    
+
           // Step 2: Create order entries for each product
           for (let i = 0; i < this.productNames.length; i++) {
             const orderData = {
@@ -94,23 +95,24 @@ export class CheckOutComponent implements OnInit {
               paymentId: payId,
               quantity: this.quantities[i],
               orderDate:  new Date().toISOString()
-              
+
             };
-    
+
             const orderResponse = await this.http.post<any>('https://localhost:7016/api/Order', orderData).toPromise();
             console.log('Order registered successfully. Order ID:', orderResponse.orderId);
           }
-    
+
           await this.presentSuccessAlert();
-          this.goToHomePage();
+          this.goToHomePage(userId);
         } catch (error) {
           console.error('Error registering order:', error);
         }
       } else {
         console.error('Form is invalid or no product names are available.');
       }
+
     }
-    
+
 
     async presentSuccessAlert() {
       const alert = await this.alertController.create({
@@ -118,16 +120,17 @@ export class CheckOutComponent implements OnInit {
         message: 'Order added successfully',
         buttons: ['OK']
       });
-    
+
       await alert.present();
     }
-  
 
-    
+
+
 
 
   goBack() {
     this.location.back();
+
   }
 
   // goToAccountPage() {
@@ -145,15 +148,25 @@ export class CheckOutComponent implements OnInit {
   //       default:
   //         console.error('Invalid user type');
   //         break;
-  //     }  
+  //     }
   //   } else {
-  //       this.router.navigate(['/sign-in']); 
+  //       this.router.navigate(['/sign-in']);
   //   }
   // }
 
-  goToHomePage() {
+  goToHomePage(userId:number) {
     this.router.navigate(['/home'], { queryParams: { userId: this.userId, userType: this.userType } });
+    this.DeleteCartItems(userId)
   }
 
+  DeleteCartItems(userId:number)
+  {
+    this.cartservice.DeleteUserItems(userId).subscribe({
+      next: () => {
+        console.log('Product deleted successfully.');
+        this.cartservice.updateCartCount(0)
+      },
+    });
+  }
 }
 
