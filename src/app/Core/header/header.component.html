@@ -54,7 +54,7 @@
           <a class="nav-link" routerLink="/Products">Products</a>
         </li>}
 
-          <div class="dropdown">
+          <div class="dropdown" *ngIf="accountService.isAuthenticated" >
             <a class="btn btn-secondary bg-white border-0 dropdown-toggle" role="button"
               data-bs-toggle="dropdown" aria-expanded="false"  style="margin-top: 5.5px;">
               Category
