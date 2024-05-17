@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AccountService } from '../Services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+ constructor( public account:AccountService){}
 }
