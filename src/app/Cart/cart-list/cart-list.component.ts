@@ -34,10 +34,10 @@ onDelete(productId: number, userId: number): void {
       console.log('Product deleted successfully.');
 
       const index = this.Cartproduct.findIndex(c => c.id ===productId && c.userId==userId);
-
+      const deletedQuantity = this.Cartproduct[index].quantity;
       this.Cartproduct.splice(index, 1);
-
       this.Cartprod = new Cart(0,0,"","","","","","",0,0);
+      this.cartservice.incrementCartCount(-deletedQuantity);
       this.calculateTotalPrice();
       this.updateCartCount();
     },
@@ -62,7 +62,6 @@ increaseQuantity(productId: number, userId: number) {
     },
     error => {
       console.error('Error increasing quantity:', error);
-      // Handle error appropriately
     }
   );
 }
@@ -70,7 +69,6 @@ increaseQuantity(productId: number, userId: number) {
 decreaseQuantity(productId: number, userId: number) {
   this.cartservice.DecreaseQuantity(productId, userId).subscribe(
     () => {
-      // Optionally, update local cart data if needed
       const product = this.Cartproduct.find(item => item.id === productId);
       if (product && product.quantity > 0) {
         product.quantity--;

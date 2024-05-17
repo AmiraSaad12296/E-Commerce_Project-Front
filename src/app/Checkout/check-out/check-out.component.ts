@@ -29,9 +29,9 @@ export class CheckOutComponent implements OnInit {
   productNames: any[] = [];
   quantities:any[]=[];
 
+
   constructor(private http: HttpClient,private nacctrl: NavController,private router: Router,
     private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController,public cartservice:CartService , public account:AccountService) {
-
 
     }
     async ngOnInit() {
@@ -68,6 +68,7 @@ export class CheckOutComponent implements OnInit {
 
 
     }
+
 
 
 
