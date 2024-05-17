@@ -15,14 +15,21 @@ import { SubCategoryProductComponent } from './sub-category-product/sub-category
 import { WishListComponent } from './WishList/wish-list/wish-list.component';
 import { ProductUpdateComponent } from './Product/product-update/product-update.component';
 import { CheckOutComponent } from './Checkout/check-out/check-out.component';
+import { SubCategoryAdminComponent } from './sub-category-admin/sub-category-admin.component';
+import { SubAddComponent } from './sub-category-admin/sub-add/sub-add.component';
+import { SubUpdateComponent } from './sub-category-admin/sub-update/sub-update.component';
+import { SubDeleteComponent } from './sub-category-admin/sub-delete/sub-delete.component';
 
 export const routes: Routes = [
 
 {path:'home',component:HomeComponent,title:"Home"},
 {path:'Contact',component:ContactUsComponent,title:"Contact", canActivate:[canLoginGuard]},
 {path:'Category',component:CatagoryComponent,title:"Category"},
-{path:'SubCategory',component:SubCategoryComponent,title:"SubCategory"},
-{path:'SubCategory/:subCatId', component: SubCategoryProductComponent,title:"SubProduct"},
+{path:'SubCategory',component:SubCategoryComponent,title:"SubCategory" },
+{path:'SubCategory/:subCatId', component:SubCategoryProductComponent,title:"SubProduct"},
+{path:'SubCategoryAdmin',component:SubCategoryAdminComponent,title:"SubCategory" , canActivate:[canLoginGuard] },
+{path:'SubCategoryAdmin/Add',component:SubAddComponent,title:"SubCategory"},
+{path:'SubCategoryAdmin/Update/:id',component:SubUpdateComponent,title:"SubCategory"},
 {path:'Cart',component:CartListComponent,title:"Cart"},
 {path:'Wish',component:WishListComponent,title:"WishList"},
 {path:'Register',component:RegisterComponent,title:"Register"},

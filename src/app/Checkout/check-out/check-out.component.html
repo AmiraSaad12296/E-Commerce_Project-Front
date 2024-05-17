@@ -1,5 +1,5 @@
-<div class="container ">
-  <form [formGroup]="checkoutForm" (ngSubmit)="submitForm()">
+<div class="container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="submitForm(account.r.UserId)">
     <div class="row">
       <div class="col-md-6">
         <h1 class="mt-5">Order Confiramtion</h1>
@@ -68,6 +68,9 @@
         </div>
       </div>
     </div>
+
+    <button type="submit" class="btn btn-primary btn-block" (click)="DeleteCartItems(account.r.UserId)">Place Order</button>
+
   </form>
 
     <div class="row">
@@ -77,8 +80,13 @@
         </button>
       </div>
       <div class="col">
+
         <button class="btn btn-dark order">
           <i>Place Order</i>
+
+        <button class="btn btn-outline-secondary" (click)="goToHomePage(account.r.UserId)">
+          <i class="bi bi-house-door"></i>
+
         </button>
       </div>
       <div class="col">

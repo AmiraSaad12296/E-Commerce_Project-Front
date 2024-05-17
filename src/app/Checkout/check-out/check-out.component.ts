@@ -1,10 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { AlertController, NavController } from '@ionic/angular';
 import {  CommonModule, Location } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AccountService } from '../../Services/account.service';
+import { CartService } from '../../Services/cart.service';
 
 
 
@@ -27,8 +28,10 @@ export class CheckOutComponent implements OnInit {
   productIds:any[]=[];
   productNames: any[] = [];
   quantities:any[]=[];
-  constructor(private http: HttpClient,private router: Router,
-    private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController) {
+
+  constructor(private http: HttpClient,private nacctrl: NavController,private router: Router,
+    private route: ActivatedRoute,private location: Location,private formBuilder: FormBuilder, private alertController: AlertController,public cartservice:CartService , public account:AccountService) {
+
 
     }
     async ngOnInit() {
@@ -67,7 +70,11 @@ export class CheckOutComponent implements OnInit {
     }
 
 
-    async submitForm() {
+
+    
+
+    async submitForm(userId:number) {
+
 
       if (this.checkoutForm.valid && this.productNames.length > 0 && this.productIds.length > 0) {
         try {
@@ -102,13 +109,14 @@ export class CheckOutComponent implements OnInit {
           }
 
           await this.presentSuccessAlert();
-          this.goToHomePage();
+          this.goToHomePage(userId);
         } catch (error) {
           console.error('Error registering order:', error);
         }
       } else {
         console.error('Form is invalid or no product names are available.');
       }
+
     }
 
 
@@ -128,6 +136,7 @@ export class CheckOutComponent implements OnInit {
 
   goBack() {
     this.location.back();
+
   }
 
   // goToAccountPage() {
@@ -151,9 +160,19 @@ export class CheckOutComponent implements OnInit {
   //   }
   // }
 
-  goToHomePage() {
+  goToHomePage(userId:number) {
     this.router.navigate(['/home'], { queryParams: { userId: this.userId, userType: this.userType } });
+    this.DeleteCartItems(userId)
   }
 
+  DeleteCartItems(userId:number)
+  {
+    this.cartservice.DeleteUserItems(userId).subscribe({
+      next: () => {
+        console.log('Product deleted successfully.');
+        this.cartservice.updateCartCount(0)
+      },
+    });
+  }
 }
 
