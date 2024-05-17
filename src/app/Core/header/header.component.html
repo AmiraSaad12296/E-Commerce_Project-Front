@@ -1,10 +1,10 @@
 <!-- Start Top Nav -->
-<nav class="navbar navbar-expand-lg bg-success navbar-light d-none d-lg-block" id="templatemo_nav_top">
+<nav  class="navbar navbar-expand-lg  d-none d-lg-block" id="templatemo_nav_top">
   <div class="container text-white ">
     <div class="w-100 d-flex justify-content-between">
       <div>
         <i class="fa fa-envelope mx-2"></i>
-        <a class="navbar-sm-brand text-white text-decoration-none" href="#">Mobily.com</a>
+        <a class="navbar-sm-brand text-white text-decoration-none" href="#">MOBILY.com</a>
         <i class="fa fa-phone mx-2"></i>
         <a class="navbar-sm-brand text-white text-decoration-none" href="#">01234567891</a>
       </div>
@@ -25,8 +25,8 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
   <div class="container d-flex justify-content-between align-items-center">
 
-    <a class="navbar-brand text-success logo h1 align-self-center" href="#">
-      Mobily
+    <a id="logo" class="navbar-brand logo h1 align-self-center" >
+      MOBILY
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -54,55 +54,6 @@
         @else {<li class="nav-item">
           <a class="nav-link" routerLink="/Products">Products</a>
         </li>}
-          @if(!accountService.isAuthenticated)
-          {
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Login">Login</a>
-          </li>}
-          @else {
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Logout">Logout</a>
-          </li>
-        }
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Register">Register</a>
-        </li>
-          <div class="dropdown">
-            <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" routerLink="/Category">
-              Category
-            </a>
-            <ul class="dropdown-menu">
-              <li class="dropdown-submenu">
-                <app-catagory></app-catagory>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="dropdown">
-            <a *ngIf="accountService.isAuthenticated" class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false"(click)="navigateToSubCategory()">
-              SubCategory
-            </a>
-            <a *ngIf="!accountService.isAuthenticated" class="btn btn-secondary bg-white border-0 " href="#" role="button" routerLink="/Login">
-              SubCategory
-            </a>
-            <ul class="dropdown-menu"*ngIf="accountService.r.isCustomer">
-              <li class="dropdown-submenu">
-                <app-sub-category></app-sub-category>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
 
           <li class="nav-item">
             <a class="nav-link" routerLink="/Contact">Contact</a>
@@ -136,23 +87,24 @@
         <a class="nav-icon position-relative text-decoration-none" href="#">
           <i class="fa fa-fw fa-user text-dark mr-3"></i>
           <div class="dropdown">
-            <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" routerLink="/Category">
+
+            <a class="btn btn-secondary bg-white border-1 mt-0 dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <span
-            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+            class="position-absolute top-0 left-10 translate-middle badge rounded-pill bg-light "></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu ">
             @if(!accountService.isAuthenticated)
             {
 
-            <li> <a class="nav-link" routerLink="/Login">Login</a></li>
+            <li> <a class="nav-link m-2" routerLink="/Login">Login</a></li>
             }
             @else {
 
-            <li> <a class="nav-link" routerLink="/Logout">Logout</a></li>
+            <li> <a (click)="logout()">Logout</a></li>
 
           }
-            <li> <a class="nav-link" routerLink="/Register">Register</a> </li>
+            <li> <a class="nav-link m-2" routerLink="/Register">Register</a> </li>
 
 
           </ul>

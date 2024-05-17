@@ -29,6 +29,10 @@ ngOnInit(): void {
   this.wishService.WishCount$.subscribe(count => {
     this.WishItemCount  = count;
 });
+  }
+  logout() {
+    this.accountService.logout();
+  }
 }
 navigateToSubCategory(): void {
   if (this.accountService.r?.isCustomer ) {
