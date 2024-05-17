@@ -83,12 +83,16 @@
               </li>
             </ul>
           </div>
+
           <div class="dropdown">
-            <a class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" routerLink="/Category">
+            <a *ngIf="accountService.isAuthenticated" class="btn btn-secondary bg-white border-0 dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false"(click)="navigateToSubCategory()">
               SubCategory
             </a>
-            <ul class="dropdown-menu">
+            <a *ngIf="!accountService.isAuthenticated" class="btn btn-secondary bg-white border-0 " href="#" role="button" routerLink="/Login">
+              SubCategory
+            </a>
+            <ul class="dropdown-menu"*ngIf="accountService.r.isCustomer">
               <li class="dropdown-submenu">
                 <app-sub-category></app-sub-category>
                 <ul class="dropdown-menu">
@@ -99,6 +103,7 @@
               </li>
             </ul>
           </div>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="/Contact">Contact</a>
           </li>

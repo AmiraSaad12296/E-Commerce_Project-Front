@@ -5,6 +5,7 @@ import { Product } from '../Models/product';
 import { ProductsService } from '../Services/products.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AccountService } from '../Services/account.service';
 
 @Component({
   selector: 'app-sub-category',
@@ -16,7 +17,7 @@ import { RouterLink } from '@angular/router';
 export class SubCategoryComponent {
 
   Subcats:SubCategory[]=[]
-  constructor(public Subcatagorservice:SubCategoryService){}
+  constructor(public Subcatagorservice:SubCategoryService ,public account:AccountService){}
   ngOnInit(): void {
    this.Subcatagorservice.getAll().subscribe(data=>{
     this.Subcats=data;

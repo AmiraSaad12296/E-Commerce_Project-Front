@@ -17,13 +17,15 @@ import { RouterLink } from '@angular/router';
 export class CartListComponent {
   Cartprod:Cart= new Cart(0,0,"","","","","","",0,0)
   totalPrice: number = 0;
-  Cartproduct:Cart[]=[]
+  Cartproduct:Cart[]=[];
+  cartCount: number = 0
   constructor( public productService:ProductsService , public cartservice:CartService , public account:AccountService){}
   ngOnInit() {
 
     this.cartservice.getUserItems(this.account.r.UserId).subscribe((data: any) => {
       this.Cartproduct = data;
       this.calculateTotalPrice();
+      this.updateCartCount();
     });
 }
 onDelete(productId: number, userId: number): void {
@@ -37,6 +39,7 @@ onDelete(productId: number, userId: number): void {
 
       this.Cartprod = new Cart(0,0,"","","","","","",0,0);
       this.calculateTotalPrice();
+      this.updateCartCount();
     },
 
   });
@@ -52,6 +55,8 @@ increaseQuantity(productId: number, userId: number) {
       const product = this.Cartproduct.find(item => item.id === productId);
         if (product) {
           product.quantity++;
+          this.cartservice.incrementCartCount(1);
+
         }
       this.calculateTotalPrice();
     },
@@ -69,12 +74,12 @@ decreaseQuantity(productId: number, userId: number) {
       const product = this.Cartproduct.find(item => item.id === productId);
       if (product && product.quantity > 0) {
         product.quantity--;
+        this.cartservice.incrementCartCount(-1);
       }
       this.calculateTotalPrice();
     },
     error => {
       console.error('Error decreasing quantity:', error);
-      // Handle error appropriately
     }
   );
 }
@@ -92,6 +97,12 @@ getCheckoutQueryParams() {
   };
 
 }
+
+
+updateCartCount(): void {
+  this.cartCount = this.Cartproduct.reduce((total, product) => total + product.quantity, 0);
+}
+
 }
 
 
