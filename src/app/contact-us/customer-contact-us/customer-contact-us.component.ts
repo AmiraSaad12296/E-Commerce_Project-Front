@@ -22,7 +22,7 @@ export class CustomerContactUsComponent {
   save(){
     this.sub=this.contactService.addContact(this.Cont).subscribe(data=>{
       console.log(data);
-      this.router.navigateByUrl("/Home");
+      this.router.navigateByUrl("/home");
     });
 
   }

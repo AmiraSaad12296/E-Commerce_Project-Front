@@ -1,35 +1,23 @@
-<div *ngIf="account.r?.isCustomer || account.r?.isAdmin">
+<div *ngIf="account.r?.isCustomer ">
 <div class="container">
     <div class="row">
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-4 mb-3" *ngFor="let product of products" >
+          <div class="col-md-3 mb-2" *ngFor="let product of products" >
             <div class="card">
-
                 <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct">
               <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <p class="card-text">Price: ${{ product.price }}</p>
-                <button class="btn btn-primary animate__animated animate__fadeIn" (click)="addToCart(product)">Add to Cart</button>
-                <button class="btn btn-secondary animate__animated animate__fadeIn" [routerLink]="['/Products/details',product.id]">Show Details</button>
+                <h5 class="card-title  fs-3 fw-bold">{{ product.name }}</h5>
+                <p class="card-text fs-6">{{ product.description }}</p>
+                <p class="card-text fs-6">Price: ${{ product.price }}</p>
+
+                  <button id="addtocart" class="btn btn-primary animate__animated animate__fadeIn cart-button br-0" (click)="addToCart(product.id , account.r.UserId)"><i class="fas fa-shopping-cart"></i></button>
+
+                  <button id ="wishlist-button" class="btn btn-danger animate__animated animate__fadeIn wishlist-button " (click)="addWish(product.id , account.r.UserId)"><i class="fas fa-heart "></i></button>
+
+                <button id="details" class="btn  btn-dark animate__animated animate__fadeIn" [routerLink]="['/Products/details',product.id]">Details</button>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-header">Shopping Cart</div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let item of cartItems">
-              {{ item.product.name }} - Quantity: {{ item.quantity }}
-              <button class="btn btn-danger btn-sm float-right" (click)="removeFromCart(item)">Remove</button>
-            </li>
-          </ul>
-          <div class="card-footer">
-            <p>Total: ${{ getTotal() }}</p>
-            <button class="btn btn-success">Checkout</button>
           </div>
         </div>
       </div>
@@ -37,3 +25,38 @@
   </div>
 
 </div>
+
+
+
+
+
+
+<!-- Admin -->
+
+
+
+<div *ngIf="account.r?.isAdmin ">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let product of products" >
+              <div class="card">
+
+                  <img [src]="'https://localhost:7016' + product.productURL"  class="card-img-top" alt="ImageProduct">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">{{ product.description }}</p>
+                  <p class="card-text">Price: ${{ product.price }}</p>
+
+                    <button id="delete" class="btn btn-danger animate__animated animate__fadeIn" (click)="Delete(product.id )">Delete</button>
+
+                  <button class="btn btn-secondary animate__animated animate__fadeIn" [routerLink]="['/Products/update',product.id]">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

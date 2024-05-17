@@ -24,8 +24,8 @@
             <form action="#!">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
-                  <div class="form-floating mb-3">
-                    <input  [(ngModel)]="user.userName" type="userName" class="form-control" name="userName" id="userName" required>
+                  <div class="form-floating ">
+                    <input  [(ngModel)]="user.userName" type="userName" class="form-control" name="userName" id="userName" value="" placeholder="Username" required>
                     <label for="email" class="form-label fs-6">UserName</label>
                   </div>
                 </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
-                    <button (click)="login()" class="btn btn-primary btn-lg" type="submit">Log in</button>
+                    <button (click)="login()" class="btn btn-dark btn-lg" type="submit">Log in</button>
                   </div>
                 </div>
               </div>

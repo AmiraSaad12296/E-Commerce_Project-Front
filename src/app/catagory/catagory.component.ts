@@ -13,16 +13,13 @@ import { CommonModule } from '@angular/common';
 })
 export class CatagoryComponent {
 
-  cats:Catagory[]=[]
+   cats:Catagory[]=[]
   constructor(public catagorservice:CatagoryService){}
   ngOnInit(): void {
    this.catagorservice.getAll().subscribe(data=>{
     console.log(data)
     this.cats=data;
    })
-  }
-  getFullImagePath(relativePath: string): string {
-    return 'https://localhost:7016' + relativePath;
   }
 }
 
