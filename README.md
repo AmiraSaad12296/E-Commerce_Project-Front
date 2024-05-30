@@ -24,6 +24,7 @@ Performance and Optimization
 -Responsive Images: Use of responsive images to optimize load times and performance on different devices.
 
 *Technologies Used
+
 Angular: A powerful framework for building dynamic and responsive web applications.
 RxJS: For managing asynchronous data streams and state management.
 NgRx: For state management, enabling a unidirectional data flow and predictable state changes.
@@ -33,13 +34,20 @@ RESTful API: Integration with a back-end service for data persistence and busine
 Getting Started
 
 *Prerequisites
+
 Node.js: Ensure you have Node.js installed on your machine.
 Angular CLI: Install the Angular CLI globally using npm.
 Installation
+
 1. Clone the repository:
+
 git clone https://github.com/AmiraSaad12296/E-Commerce_Project-Front.git
 cd mobily
+
 2.Install dependencies:
+
 npm install
+
 3.Run the application:
+
 ng serve -o
