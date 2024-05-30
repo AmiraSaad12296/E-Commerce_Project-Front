@@ -1,4 +1,5 @@
 #Mobily - E-commerce Platform
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 Mobily is a modern, fully-featured e-commerce application designed for selling mobile phones and accessories. The front end of this project is built using Angular, providing a responsive and dynamic user experience. The project showcases best practices in Angular development, including state management, modular architecture, and integration with back-end services.
 
