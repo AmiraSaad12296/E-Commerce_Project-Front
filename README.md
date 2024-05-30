@@ -36,10 +36,12 @@ Getting Started
 *Prerequisites
 
 Node.js: Ensure you have Node.js installed on your machine.
+
 Angular CLI: Install the Angular CLI globally using npm.
+
 Installation
 
-1. Clone the repository:
+1.Clone the repository:
 
 git clone https://github.com/AmiraSaad12296/E-Commerce_Project-Front.git
 cd mobily
